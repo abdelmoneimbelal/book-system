@@ -54,6 +54,15 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->profile()
+            ->simpleProfilePage(false)
+            ->spa()
+            ->unsavedChangesAlerts()
+            ->databaseTransactions()
+            ->brandName('Book System')
+            ->brandLogo(asset('images/logo.png'))
+            ->brandLogoHeight('4rem')
+            ->favicon(asset('images/logo.png'));
     }
 }

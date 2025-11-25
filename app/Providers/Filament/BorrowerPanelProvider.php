@@ -53,6 +53,7 @@ class BorrowerPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->profile();
     }
 }

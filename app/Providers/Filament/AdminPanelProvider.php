@@ -62,7 +62,7 @@ class AdminPanelProvider extends PanelProvider
             ->databaseTransactions()
             ->brandName('Book System')
             ->brandLogo(asset('images/logo.png'))
-            ->brandLogoHeight('4rem')
+            ->brandLogoHeight('5rem')
             ->favicon(asset('images/logo.png'));
     }
 }

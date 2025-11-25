@@ -55,6 +55,11 @@ class BorrowerPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->profile()
-            ->simpleProfilePage(false);
+            ->simpleProfilePage(false)
+            ->spa()
+            ->unsavedChangesAlerts()
+            ->databaseTransactions()
+            ->brandName('Book System')
+            ->brandLogo(asset('images/logo.png'));
     }
 }

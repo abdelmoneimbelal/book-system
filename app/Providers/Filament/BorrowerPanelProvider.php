@@ -60,6 +60,8 @@ class BorrowerPanelProvider extends PanelProvider
             ->unsavedChangesAlerts()
             ->databaseTransactions()
             ->brandName('Book System')
-            ->brandLogo(asset('images/logo.png'));
+            ->brandLogo(asset('images/logo.png'))
+            ->brandLogoHeight('5rem')
+            ->favicon(asset('images/logo.png'));
     }
 }

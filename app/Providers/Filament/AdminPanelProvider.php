@@ -72,6 +72,7 @@ class AdminPanelProvider extends PanelProvider
                     ->label('Borrowing Management'),
                 NavigationGroup::make()
                     ->label('Administration'),
-            ]);
+            ])
+            ->resourceCreatePageRedirect('index');
     }
 }

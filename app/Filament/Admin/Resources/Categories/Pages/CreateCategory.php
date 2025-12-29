@@ -19,6 +19,14 @@ class CreateCategory extends CreateRecord
         return $data;
     }
 
+    // protected function getRedirectUrl(): string
+    // {
+    //     return CategoryResource::getUrl('index');
+    //     // return $this->getResource()::getUrl('index');
+    //     // return $this->previousUrl ?? $this->getResource()::getUrl('index');
+    // }
+
+
     // protected function handleRecordCreation(array $data): Model
     // {
     //     $category = Category::create($data);

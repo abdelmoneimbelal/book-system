@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Admin\Resources\Categories\CategoryResource;
+use Filament\Notifications\Notification;
+use Filament\Support\Icons\Heroicon;
 
 class CreateCategory extends CreateRecord
 {
@@ -18,6 +20,21 @@ class CreateCategory extends CreateRecord
 
         return $data;
     }
+
+    // protected function getCreatedNotificationTitle(): ?string
+    // {
+    //     return 'Category created successfully';
+    // }
+
+    protected function getCreatedNotification(): ?Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title('Category created')
+            ->body('The category <strong>' . $this->getRecord()->name . '</strong> has been created successfully.')
+            ->icon(Heroicon::ListBullet);
+    }
+
 
     // protected function getRedirectUrl(): string
     // {

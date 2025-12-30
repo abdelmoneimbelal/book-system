@@ -43,35 +43,37 @@ class CreateCategory extends CreateRecord
         ];
     }
 
-    protected function beforeFill(): void
-    {
-        // Runs before the form fields are populated with their default values.
-    }
+    //Lifecycle hooks
 
-    protected function afterFill(): void
-    {
-        // Runs after the form fields are populated with their default values.
-    }
+    // protected function beforeFill(): void
+    // {
+    //     // Runs before the form fields are populated with their default values.
+    // }
 
-    protected function beforeValidate(): void
-    {
-        // Runs before the form fields are validated when the form is submitted.
-    }
+    // protected function afterFill(): void
+    // {
+    //     // Runs after the form fields are populated with their default values.
+    // }
 
-    protected function afterValidate(): void
-    {
-        // Runs after the form fields are validated when the form is submitted.
-    }
+    // protected function beforeValidate(): void
+    // {
+    //     // Runs before the form fields are validated when the form is submitted.
+    // }
 
-    protected function beforeCreate(): void
-    {
-        // Runs before the form fields are saved to the database.
-    }
+    // protected function afterValidate(): void
+    // {
+    //     // Runs after the form fields are validated when the form is submitted.
+    // }
 
-    protected function afterCreate(): void
-    {
-        // Runs after the form fields are saved to the database.
-    }
+    // protected function beforeCreate(): void
+    // {
+    //     // Runs before the form fields are saved to the database.
+    // }
+
+    // protected function afterCreate(): void
+    // {
+    //     // Runs after the form fields are saved to the database.
+    // }
 
     // protected function getRedirectUrl(): string
     // {

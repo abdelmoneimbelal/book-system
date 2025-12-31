@@ -5,7 +5,9 @@ namespace App\Filament\Admin\Resources\Categories;
 use App\Filament\Admin\Resources\Categories\Pages\CreateCategory;
 use App\Filament\Admin\Resources\Categories\Pages\EditCategory;
 use App\Filament\Admin\Resources\Categories\Pages\ListCategories;
+use App\Filament\Admin\Resources\Categories\Pages\ViewCategory;
 use App\Filament\Admin\Resources\Categories\Schemas\CategoryForm;
+use App\Filament\Admin\Resources\Categories\Schemas\CategoryInfolist;
 use App\Filament\Admin\Resources\Categories\Tables\CategoriesTable;
 use App\Models\Category;
 use BackedEnum;
@@ -32,6 +34,11 @@ class CategoryResource extends Resource
         return CategoryForm::configure($schema);
     }
 
+    public static function infolist(Schema $schema): Schema
+    {
+        return CategoryInfolist::configure($schema);
+    }
+
     public static function table(Table $table): Table
     {
         return CategoriesTable::configure($table);
@@ -50,6 +57,7 @@ class CategoryResource extends Resource
             'index' => ListCategories::route('/'),
             'create' => CreateCategory::route('/create'),
             'edit' => EditCategory::route('/{record}/edit'),
+            'view' => ViewCategory::route('/{record}'),
         ];
     }
 }

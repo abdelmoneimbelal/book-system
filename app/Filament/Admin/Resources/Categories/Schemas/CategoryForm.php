@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources\Categories\Schemas;
 
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 
 class CategoryForm
 {
@@ -15,11 +16,14 @@ class CategoryForm
                     ->placeholder('Category Name')
                     ->required()
                     ->label('Category Name')
-                    ->columnSpanFull()
                     ->rules([
                         'required',
                         'max:255',
                     ]),
-            ]);
+                Select::make('status')
+                    ->options(['active' => 'Active', 'inactive' => 'Inactive'])
+                    ->default('active'),
+            ])
+            ->columns(2);
     }
 }

@@ -8,6 +8,8 @@ use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ToggleColumn;
 
 class CategoriesTable
 {
@@ -18,13 +20,19 @@ class CategoriesTable
                 TextColumn::make('name')
                 ->searchable()
                 ->sortable(),
+                TextColumn::make('status')
+                ->badge()
+                ->color(function ($record) {
+                    return $record->status === 'active' ? 'success' : 'danger';
+                })
+                ->sortable(),
                 TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable(),
                 // ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                ->dateTime()
-                ->sortable(),
+                // TextColumn::make('updated_at')
+                // ->dateTime()
+                // ->sortable(),
                 // ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

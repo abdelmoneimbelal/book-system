@@ -16,9 +16,15 @@ class CategoryForm
                     ->placeholder('Category Name')
                     ->required()
                     ->label('Category Name')
+                    // ->inlineLabel()
+                    ->default(old('name'))
+                    // ->prefix('https://')
+                    // ->suffix('.com')
+                    ->autofocus()
+                    ->belowContent('Category name is required')                    
                     ->rules([
                         'required',
-                        'max:255',
+                        'max:255',  
                     ]),
                 Select::make('status')
                     ->options(['active' => 'Active', 'inactive' => 'Inactive'])

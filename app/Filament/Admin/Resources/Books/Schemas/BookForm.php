@@ -13,21 +13,23 @@ class BookForm
         return $schema
             ->components([
                 TextInput::make('title')
-                ->placeholder('Enter book title')
+                    ->placeholder('Enter book title')
                     ->required(),
                 TextInput::make('isbn')
+                    ->unique(ignoreRecord: true)
                     ->placeholder('Enter book ISBN')
                     ->required(),
                 DatePicker::make('published_year')
+                    ->label('Published date')
+                    ->default(now())
+                    ->native(false)
                     ->placeholder('Enter published year')
                     ->required(),
                 TextInput::make('total_copies')
-                    ->placeholder('Enter total copies')
                     ->required()
                     ->numeric()
                     ->default(0),
                 TextInput::make('available_copies')
-                    ->placeholder('Enter available copies')
                     ->required()
                     ->numeric()
                     ->default(0),

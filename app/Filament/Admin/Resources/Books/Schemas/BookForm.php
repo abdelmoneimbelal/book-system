@@ -3,8 +3,10 @@
 namespace App\Filament\Admin\Resources\Books\Schemas;
 
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use App\Models\Author;
 
 class BookForm
 {
@@ -26,16 +28,23 @@ class BookForm
                     ->placeholder('Enter published year')
                     ->required(),
                 TextInput::make('total_copies')
+                    ->placeholder('Enter total copies')
                     ->required()
-                    ->numeric()
-                    ->default(0),
+                    ->rules([
+                        'min:1',
+                    ])
+                    ->numeric(),
                 TextInput::make('available_copies')
                     ->required()
-                    ->numeric()
-                    ->default(0),
-                TextInput::make('author_id')
-                    ->placeholder('Enter author ID')
+                    ->rules([
+                        'min:0',
+                    ])
+                    ->placeholder('Enter available copies')
                     ->numeric(),
+                Select::make('author_id')
+                    ->options(Author::all()->pluck('name', 'id'))
+                    ->placeholder('Select author')
+                    ->required(),
             ]);
     }
 }

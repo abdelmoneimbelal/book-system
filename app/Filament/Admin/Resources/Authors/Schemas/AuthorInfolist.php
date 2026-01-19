@@ -12,10 +12,10 @@ class AuthorInfolist
         return $schema
             ->components([
                 TextEntry::make('name'),
-                TextEntry::make('created_at')
-                    ->dateTime(),
-                TextEntry::make('updated_at')
-                    ->dateTime(),
+                TextEntry::make('bio')
+                ->html(),
+                TextEntry::make('created_at'),
+                TextEntry::make('updated_at'),
             ]);
     }
 }

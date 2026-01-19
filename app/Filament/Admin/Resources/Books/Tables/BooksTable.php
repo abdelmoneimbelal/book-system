@@ -8,6 +8,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class BooksTable
@@ -17,10 +18,13 @@ class BooksTable
         return $table
             ->columns([
                 TextColumn::make('title')
+                    ->sortable()
                     ->searchable(),
-                TextColumn::make('isbn')
-                    ->searchable(),
+                // TextColumn::make('isbn')
+                //     ->searchable()
+                //     ->sortable(),
                 TextColumn::make('published_year')
+                    ->label('Published date')
                     ->date()
                     ->sortable(),
                 TextColumn::make('total_copies')
@@ -34,17 +38,20 @@ class BooksTable
                     ->formatStateUsing(fn ($state) => Author::find($state)?->name)
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                // TextColumn::make('created_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true),
+                // TextColumn::make('updated_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('author_id')
+                    ->options(Author::all()->pluck('name', 'id'))
+                    ->searchable()
+                    ->placeholder('Select author'),
             ])
             ->recordActions([
                 ViewAction::make(),

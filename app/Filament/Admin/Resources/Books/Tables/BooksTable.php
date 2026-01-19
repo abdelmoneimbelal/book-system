@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\Books\Tables;
 
+use App\Models\Author;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -29,7 +30,9 @@ class BooksTable
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('author_id')
-                    ->numeric()
+                    ->label('Author')
+                    ->formatStateUsing(fn ($state) => Author::find($state)?->name)
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()

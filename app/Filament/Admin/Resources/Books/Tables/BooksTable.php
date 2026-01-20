@@ -64,9 +64,10 @@ class BooksTable
                     ->label('Author')
                     ->options(Author::all()->pluck('name', 'id'))
                     ->searchable()
+                    ->multiple()
                     ->placeholder('Select author'),
             ])
-            ->deferFilters(false)
+            // ->deferFilters(false)
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),

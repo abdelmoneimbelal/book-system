@@ -34,17 +34,21 @@ class BooksTable
                 TextColumn::make('published_year')
                     ->label('Published date')
                     ->date()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->sortable(),
                 TextColumn::make('total_copies')
                     ->numeric()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->sortable(),
                 TextColumn::make('available_copies')
                     ->numeric()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->sortable(),
                 TextColumn::make('author_id')
                     ->label('Author')
                     ->formatStateUsing(fn ($state) => Author::find($state)?->name)
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->sortable(),
                 // TextColumn::make('created_at')
                 //     ->dateTime()
@@ -71,6 +75,7 @@ class BooksTable
                 ]),
             ])
             ->striped()
+            ->reorderableColumns()
             ->heading('Books table')
             ->description('Manage your books here');
     }

@@ -76,6 +76,7 @@ class BooksTable
             ])
             ->striped()
             ->reorderableColumns()
+            ->deferColumnManager(false)
             ->heading('Books table')
             ->description('Manage your books here');
     }

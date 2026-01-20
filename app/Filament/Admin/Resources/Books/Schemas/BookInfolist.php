@@ -21,6 +21,7 @@ class BookInfolist
                 TextEntry::make('available_copies')
                     ->numeric(),
                 TextEntry::make('author_id')
+                    ->label('Author')
                     ->formatStateUsing(fn ($state) => Author::find($state)?->name),
                 TextEntry::make('created_at')
                     ->dateTime(),

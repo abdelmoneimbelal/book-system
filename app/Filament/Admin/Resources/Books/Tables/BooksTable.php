@@ -7,6 +7,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -18,6 +19,13 @@ class BooksTable
         return $table
             ->columns([
                 TextColumn::make('title')
+                    ->sortable()
+                    ->searchable(),
+                SelectColumn::make('status')
+                    ->options([
+                        'available' => 'Available',
+                        'unavailable' => 'Unavailable',
+                    ])
                     ->sortable()
                     ->searchable(),
                 // TextColumn::make('isbn')
@@ -61,6 +69,9 @@ class BooksTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->striped()
+            ->heading('Books table')
+            ->description('Manage your books here');
     }
 }

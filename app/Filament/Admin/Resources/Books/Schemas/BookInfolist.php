@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\Books\Schemas;
 
+use App\Models\Author;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -20,7 +21,7 @@ class BookInfolist
                 TextEntry::make('available_copies')
                     ->numeric(),
                 TextEntry::make('author_id')
-                    ->numeric(),
+                    ->formatStateUsing(fn ($state) => Author::find($state)?->name),
                 TextEntry::make('created_at')
                     ->dateTime(),
                 TextEntry::make('updated_at')

@@ -3,7 +3,9 @@
 namespace App\Filament\Admin\Resources\Books\Tables;
 
 use App\Models\Author;
+use App\Filament\Admin\Resources\Books\BookResource;
 use Filament\Tables\Table;
+use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Actions\BulkActionGroup;
@@ -83,6 +85,13 @@ class BooksTable
             ->reorderableColumns()
             ->deferColumnManager(false)
             ->heading('Books table')
-            ->description('Manage your books here');
+            ->description('Manage your books here')
+            ->emptyStateActions([
+                Action::make('create')
+                    ->label('Create book')
+                    ->url(BookResource::getUrl('create'))
+                    ->icon('heroicon-o-book-open')
+                    ->button(),
+            ]);
     }
 }

@@ -3,14 +3,15 @@
 namespace App\Filament\Admin\Resources\Books\Tables;
 
 use App\Models\Author;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
+use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Tables\Columns\SelectColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Table;
 
 class BooksTable
 {
@@ -66,7 +67,8 @@ class BooksTable
                     ->searchable()
                     ->multiple()
                     ->placeholder('Select author'),
-            ])
+                ])
+            // ], FiltersLayout::AboveContentCollapsible)
             // ->deferFilters(false)
             ->recordActions([
                 ViewAction::make(),

@@ -41,6 +41,7 @@ class BookForm
                     ->placeholder('Enter available copies')
                     ->numeric(),
                 Select::make('author_id')
+                    ->searchable()
                     ->relationship('author', 'name')
                     ->placeholder('Select author')
                     ->required(),

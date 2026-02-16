@@ -6,7 +6,6 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
-use App\Models\Author;
 
 class BookForm
 {
@@ -42,7 +41,7 @@ class BookForm
                     ->placeholder('Enter available copies')
                     ->numeric(),
                 Select::make('author_id')
-                    ->options(Author::all()->pluck('name', 'id'))
+                    ->relationship('author', 'name')
                     ->placeholder('Select author')
                     ->required(),
             ]);

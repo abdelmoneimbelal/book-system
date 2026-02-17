@@ -55,6 +55,7 @@ class BookForm
                             ])
                             ->required(),
                     ])
+                    ->createOptionFormHeading('Create Author')
                     ->preload()
                     ->placeholder('Select author')
                     ->required(),

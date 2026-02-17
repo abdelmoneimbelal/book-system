@@ -6,6 +6,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\RichEditor;
 
 class BookForm
 {
@@ -47,9 +48,12 @@ class BookForm
                         TextInput::make('name')
                             ->placeholder('Author Name')
                             ->required(),
-                        // TextInput::make('bio')
-                        //     ->placeholder('Author Bio')
-                        //     ->required(),
+                        RichEditor::make('bio')
+                            ->placeholder('Author Bio')
+                            ->extraAttributes([
+                                'style' => 'height: 200px;',
+                            ])
+                            ->required(),
                     ])
                     ->preload()
                     ->placeholder('Select author')

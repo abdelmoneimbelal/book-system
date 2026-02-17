@@ -43,6 +43,15 @@ class BookForm
                 Select::make('author_id')
                     ->searchable()
                     ->relationship('author', 'name')
+                    ->createOptionForm([
+                        TextInput::make('name')
+                            ->placeholder('Author Name')
+                            ->required(),
+                        // TextInput::make('bio')
+                        //     ->placeholder('Author Bio')
+                        //     ->required(),
+                    ])
+                    ->preload()
                     ->placeholder('Select author')
                     ->required(),
             ]);

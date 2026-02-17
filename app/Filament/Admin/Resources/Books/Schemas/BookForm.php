@@ -3,10 +3,10 @@
 namespace App\Filament\Admin\Resources\Books\Schemas;
 
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
-use Filament\Forms\Components\RichEditor;
 
 class BookForm
 {
@@ -44,6 +44,9 @@ class BookForm
                 Select::make('author_id')
                     ->searchable()
                     ->relationship('author', 'name')
+                    ->preload()
+                    ->placeholder('Select author')
+                    ->required()
                     ->createOptionForm([
                         TextInput::make('name')
                             ->placeholder('Author Name')
@@ -53,12 +56,10 @@ class BookForm
                             ->extraAttributes([
                                 'style' => 'height: 200px;',
                             ])
-                            ->required(),
+                            ->required()
                     ])
-                    ->createOptionFormHeading('Create Author')
-                    ->preload()
-                    ->placeholder('Select author')
-                    ->required(),
+                    ->createOptionModalHeading('Create New Author'),
             ]);
+            
     }
 }

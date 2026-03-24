@@ -11,10 +11,10 @@ class BorrowingInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('borrower_id')
-                    ->numeric(),
-                TextEntry::make('book_id')
-                    ->numeric(),
+                TextEntry::make('borrower.name')
+                    ->label('Borrower'),
+                TextEntry::make('book.title')
+                    ->label('Book'),
                 TextEntry::make('borrowed_at')
                     ->dateTime(),
                 TextEntry::make('status'),

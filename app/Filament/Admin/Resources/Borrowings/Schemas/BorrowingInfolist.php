@@ -12,9 +12,9 @@ class BorrowingInfolist
         return $schema
             ->components([
                 TextEntry::make('borrower.name')
-                    ->label('Borrower'),
+                    ->label('Borrower Name'),
                 TextEntry::make('book.title')
-                    ->label('Book'),
+                    ->label('Book Title'),
                 TextEntry::make('borrowed_at')
                     ->dateTime(),
                 TextEntry::make('status'),

@@ -29,7 +29,7 @@ class BooksRelationManager extends RelationManager
 
     public function isReadOnly():bool
     {
-        return false;
+        return true;
     }
 
     public function form(Schema $schema): Schema
@@ -103,14 +103,14 @@ class BooksRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                CreateAction::make(),
-                AssociateAction::make(),
+                // CreateAction::make(),
+                // AssociateAction::make(),
             ])
             ->recordActions([
                 ViewAction::make(),
-                EditAction::make(),
-                DissociateAction::make(),
-                DeleteAction::make(),
+                // EditAction::make(),
+                // DissociateAction::make(),
+                // DeleteAction::make(),
             ])
             ->toolbarActions([
                 // BulkActionGroup::make([

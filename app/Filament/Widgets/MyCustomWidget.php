@@ -9,7 +9,7 @@ use Filament\Notifications\Notification;
 class MyCustomWidget extends Widget
 {
      // protected static ?int $sort = 2;
-    // protected static bool $isDiscovered = false;
+    protected static bool $isDiscovered = false;
 
     protected int | string | array $columnSpan = 'full';
 

@@ -73,6 +73,9 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make()
                     ->label('Administration'),
             ])
-            ->resourceCreatePageRedirect('index');
+            ->resourceCreatePageRedirect('index')
+            // ->globalSearch(false);
+            ->globalSearchKeyBindings(['ctrl+q'])
+            ;
     }
 }

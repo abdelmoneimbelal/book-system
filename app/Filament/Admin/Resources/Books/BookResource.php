@@ -10,13 +10,16 @@ use App\Filament\Admin\Resources\Books\RelationManagers\BorrowingsRelationManage
 use App\Filament\Admin\Resources\Books\Schemas\BookForm;
 use App\Filament\Admin\Resources\Books\Schemas\BookInfolist;
 use App\Filament\Admin\Resources\Books\Tables\BooksTable;
+use Illuminate\Contracts\Support\Htmlable;
 use App\Models\Book;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use UnitEnum;
+use Filament\Actions\Action;
 
 class BookResource extends Resource
 {
@@ -61,4 +64,45 @@ class BookResource extends Resource
             'edit' => EditBook::route('/{record}/edit'),
         ];
     }
+
+    public static function getGlobalSearchResultTitle(Model $record): string | Htmlable
+    {
+        return $record->title . ' | ' . $record->isbn;
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['title', 'isbn'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Available Copies' => $record->available_copies,
+            'Total Copies' => $record->total_copies,
+        ];
+    }
+
+    // public static function getGlobalSearchResultUrl(Model $record): string
+    // {
+    //     return BookResource::getUrl('index');
+    // }
+
+    // public static function getGlobalSearchResultActions(Model $record): array
+    // {
+    //     return [
+    //         Action::make('Go To Google')
+    //             ->url('https://www.google.com')
+    //             ->button(),
+    //     ];
+    // }
+
+    protected static int $globalSearchResultsLimit = 1;
+
+    // public static function getWidgets(): array
+    // {
+    //     return [
+    //         TotalBooksWidget::class,
+    //     ];
+    // }
 }
